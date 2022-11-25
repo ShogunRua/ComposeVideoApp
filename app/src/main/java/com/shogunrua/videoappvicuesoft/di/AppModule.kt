@@ -1,6 +1,7 @@
 package com.shogunrua.videoappvicuesoft.di
 
 import com.shogunrua.videoappvicuesoft.data.ApiCallWrapper
+import com.shogunrua.videoappvicuesoft.data.VideoAppLogger
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -24,6 +25,7 @@ class AppModule {
     fun provideKtorClient(): HttpClient {
         return HttpClient(OkHttp) {
             install(Logging) {
+                logger = VideoAppLogger()
                 level = LogLevel.ALL
             }
 
