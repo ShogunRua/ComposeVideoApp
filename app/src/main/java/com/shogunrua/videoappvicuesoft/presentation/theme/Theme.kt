@@ -1,4 +1,4 @@
-package com.shogunrua.videoappvicuesoft.ui.theme
+package com.shogunrua.videoappvicuesoft.presentation.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme

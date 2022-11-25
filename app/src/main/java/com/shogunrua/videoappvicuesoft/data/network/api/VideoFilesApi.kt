@@ -2,8 +2,8 @@ package com.shogunrua.videoappvicuesoft.data.network.api
 
 import arrow.core.Either
 import com.shogunrua.videoappvicuesoft.data.network.response.VideoFilesResponse
-import com.shogunrua.videoappvicuesoft.data.utils.ApiCallWrapper
-import com.shogunrua.videoappvicuesoft.data.utils.Failure
+import com.shogunrua.videoappvicuesoft.data.network.utils.ApiCallWrapper
+import com.shogunrua.videoappvicuesoft.data.network.utils.Failure
 import io.ktor.client.*
 import io.ktor.client.call.*
 import io.ktor.client.request.*

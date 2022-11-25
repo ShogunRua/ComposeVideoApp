@@ -1,4 +1,4 @@
 package com.shogunrua.videoappvicuesoft.data.network.response
 
 
-class VideoFilesResponse : ArrayList<VideoFileItem>()
+class VideoFilesResponse : ArrayList<VideoFilesItem>()

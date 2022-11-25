@@ -6,7 +6,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class VideoFileItem(
+data class VideoFilesItem(
     @SerialName("color")
     @Contextual val color: Any,
     @SerialName("file_url")

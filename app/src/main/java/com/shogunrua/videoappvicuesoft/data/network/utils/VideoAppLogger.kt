@@ -1,4 +1,4 @@
-package com.shogunrua.videoappvicuesoft.data.utils
+package com.shogunrua.videoappvicuesoft.data.network.utils
 
 import android.util.Log
 import io.ktor.client.plugins.logging.*

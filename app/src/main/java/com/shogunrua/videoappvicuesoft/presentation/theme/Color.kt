@@ -1,4 +1,4 @@
-package com.shogunrua.videoappvicuesoft.ui.theme
+package com.shogunrua.videoappvicuesoft.presentation.theme
 
 import androidx.compose.ui.graphics.Color
 

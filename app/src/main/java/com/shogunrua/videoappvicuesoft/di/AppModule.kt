@@ -1,7 +1,7 @@
 package com.shogunrua.videoappvicuesoft.di
 
-import com.shogunrua.videoappvicuesoft.data.utils.ApiCallWrapper
-import com.shogunrua.videoappvicuesoft.data.utils.VideoAppLogger
+import com.shogunrua.videoappvicuesoft.data.network.utils.ApiCallWrapper
+import com.shogunrua.videoappvicuesoft.data.network.utils.VideoAppLogger
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
