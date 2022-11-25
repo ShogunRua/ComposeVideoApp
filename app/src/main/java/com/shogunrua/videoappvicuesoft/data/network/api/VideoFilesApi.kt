@@ -16,7 +16,7 @@ class VideoFilesApi @Inject constructor(
 
     override suspend fun execute(): Either<Failure, VideoFilesResponse> {
         return apiCallWrapper.safeApiCall {
-            httpClient.get("backgrounds") {
+            httpClient.get("api/backgrounds/") {
                 parameter("group", "video")
                 parameter("category_id", "1")
             }.body()

@@ -61,7 +61,7 @@ class AppModule {
 
     companion object {
         private const val BASE_URL =
-            "dev.bgrem.deelvin.com/api"
+            "dev.bgrem.deelvin.com"
         private const val ACCEPT = "Accept"
         private const val CONTENT_TYPE = "Content-Type"
         private const val APP_JSON = "application/json"
