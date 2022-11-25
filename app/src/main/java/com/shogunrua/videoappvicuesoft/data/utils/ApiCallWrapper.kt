@@ -1,4 +1,4 @@
-package com.shogunrua.videoappvicuesoft.data
+package com.shogunrua.videoappvicuesoft.data.utils
 
 import android.util.Log
 import arrow.core.Either

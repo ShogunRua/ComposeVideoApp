@@ -1,7 +1,7 @@
 package com.shogunrua.videoappvicuesoft.di
 
-import com.shogunrua.videoappvicuesoft.data.ApiCallWrapper
-import com.shogunrua.videoappvicuesoft.data.VideoAppLogger
+import com.shogunrua.videoappvicuesoft.data.utils.ApiCallWrapper
+import com.shogunrua.videoappvicuesoft.data.utils.VideoAppLogger
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -61,7 +61,7 @@ class AppModule {
 
     companion object {
         private const val BASE_URL =
-            "dev.bgrem.deelvin.com/api/backgrounds/?group=video&category_id=1"
+            "dev.bgrem.deelvin.com/api"
         private const val ACCEPT = "Accept"
         private const val CONTENT_TYPE = "Content-Type"
         private const val APP_JSON = "application/json"
