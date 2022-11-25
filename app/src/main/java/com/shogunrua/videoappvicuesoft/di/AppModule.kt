@@ -69,4 +69,5 @@ class AppModule {
 
     @[Provides Singleton]
     fun providesApiCallWrapper() = ApiCallWrapper()
+
 }
