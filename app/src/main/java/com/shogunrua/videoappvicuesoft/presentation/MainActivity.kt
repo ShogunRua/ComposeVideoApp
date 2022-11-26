@@ -15,6 +15,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.shogunrua.videoappvicuesoft.presentation.screens.VideoPlayerScreen
 import com.shogunrua.videoappvicuesoft.presentation.viewmodel.VideoFilesViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -27,7 +28,7 @@ class MainActivity : ComponentActivity() {
                 modifier = Modifier.fillMaxSize(),
                 color = Color.White,
             ) {
-                VideoFilesScreen()
+                VideoPlayerScreen()
             }
         }
     }

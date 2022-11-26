@@ -1,12 +1,14 @@
 @file:OptIn(ExperimentalStdlibApi::class)
 
 import Versions.appcompatVer
+import Versions.coilComposeVer
+import Versions.coilVer
 import Versions.composeNav
 import Versions.composeVer
 import Versions.coroutinesVer
 import Versions.daggerHiltVer
+import Versions.exoPlayerVer
 import Versions.ktorVer
-import Versions.roomVersion
 
 object Versions {
     const val appcompatVer = "1.5.1"
@@ -14,8 +16,10 @@ object Versions {
     const val daggerHiltVer = "2.44.2"
     const val ktorVer = "2.0.2"
     const val coroutinesVer = "1.5.2"
-    const val roomVersion = "2.4.3"
     const val composeNav = "2.4.0-beta02"
+    const val exoPlayerVer = "1.0.0-beta03"
+    const val coilVer = "2.2.2"
+    const val coilComposeVer = "2.2.2"
 }
 
 object Dependencies {
@@ -85,10 +89,18 @@ object Dependencies {
     //Viewmodel
     private const val viewmodel = "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1"
 
-    //Room
-    private const val room = "androidx.room:room-runtime:$roomVersion"
-    private const val roomKapt = "androidx.room:room-compiler:$roomVersion"
-    private const val roomCoroutines = "androidx.room:room-ktx:$roomVersion"
+    //ExoPlayer
+    private const val exoPlayer = "androidx.media3:media3-exoplayer:$exoPlayerVer"
+    private const val exoPlayerUi = "androidx.media3:media3-ui:$exoPlayerVer"
+    private const val exoPlayerMediaSource =
+        "com.google.android.exoplayer:exoplayer-hls:$exoPlayerVer"
+    private const val exoPlayerCore = "com.google.android.exoplayer:exoplayer-core:$exoPlayerVer"
+    private const val exoPlayerDash = "com.google.android.exoplayer:exoplayer-dash:$exoPlayerVer"
+
+    //Coil
+    private const val coil = "io.coil-kt:coil:$coilVer"
+    private const val coilSvg = "io.coil-kt:coil-svg:$coilVer"
+    private const val coilCompose = "io.coil-kt:coil-compose:$coilComposeVer"
 
     val appLibraries = buildList {
         add(lifecycleRuntime)
@@ -135,9 +147,15 @@ object Dependencies {
 
         add(viewmodel)
 
-        add(room)
-        add(roomCoroutines)
+        add(exoPlayer)
+        add(exoPlayerUi)
+//        add(exoPlayerMediaSource)
+//        add(exoPlayerCore)
+//        add(exoPlayerDash)
 
+        add(coil)
+        add(coilSvg)
+        add(coilCompose)
     }
 
     val androidTestLibraries = buildList {
@@ -152,6 +170,5 @@ object Dependencies {
 
     val kaptCompilers = buildList {
         add(daggerHiltCompiler)
-        add(roomKapt)
     }
 }
