@@ -1,6 +1,5 @@
 package com.shogunrua.videoappvicuesoft.presentation.viewmodel
 
-import android.net.Uri
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -8,7 +7,7 @@ import com.shogunrua.videoappvicuesoft.domain.usecase.GetVideoFilesUseCase
 import com.shogunrua.videoappvicuesoft.presentation.model.ListOfVideosData
 import com.shogunrua.videoappvicuesoft.presentation.model.VideoData
 import com.shogunrua.videoappvicuesoft.presentation.model.VideoPlayerCombineData
-import com.shogunrua.videoappvicuesoft.presentation.model.VideoPlayerUiState
+import com.shogunrua.videoappvicuesoft.presentation.model.uiState.VideoPlayerUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -44,6 +43,9 @@ class VideoFilesViewModel @Inject constructor(
                 },
                 ifRight = {
                     listOfVideosData.value.listOfVideos.value = it
+                    delay(3.seconds)
+                    videosData.value.videoFile.value =
+                        listOfVideosData.value.listOfVideos.value[0].fileUrl
                     buildVideoFilesUiData()
                     Log.d("VideoFilesViewModel", "getVideoFiles: $it")
                 }
@@ -62,8 +64,6 @@ class VideoFilesViewModel @Inject constructor(
                     videoData = videosData,
                 )
             }.collect { videoFilesUiData ->
-                videosData.value.videoFile.value = listOfVideosData.value.listOfVideos.value[0].fileUrl
-                delay(5.seconds)
                 _uiState.value = VideoPlayerUiState.LoadComplete(videoFilesUiData)
             }
         }

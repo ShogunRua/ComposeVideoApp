@@ -15,6 +15,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.blur
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
@@ -24,7 +25,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.shogunrua.videoappvicuesoft.R
 import com.shogunrua.videoappvicuesoft.presentation.model.VideoDataCallbacks
 import com.shogunrua.videoappvicuesoft.presentation.model.VideoPlayerCombineData
-import com.shogunrua.videoappvicuesoft.presentation.model.VideoPlayerUiState
+import com.shogunrua.videoappvicuesoft.presentation.model.uiState.VideoPlayerUiState
 import com.shogunrua.videoappvicuesoft.presentation.theme.GrayBackGround
 import com.shogunrua.videoappvicuesoft.presentation.theme.PurpleButton
 import com.shogunrua.videoappvicuesoft.presentation.viewmodel.VideoFilesViewModel
@@ -83,11 +84,6 @@ fun VideoPlayerContent(
     data: VideoPlayerCombineData,
     modifier: Modifier = Modifier,
 ) {
-
-    var selectedIndex by remember {
-        mutableStateOf(0)
-    }
-
     Column(
         verticalArrangement = Arrangement.Bottom,
         horizontalAlignment = Alignment.CenterHorizontally
@@ -95,7 +91,10 @@ fun VideoPlayerContent(
         Spacer(modifier = modifier.padding(20.dp))
 
         if (!data.videoData.videoIsReady.value) {
-            ExoVideoPlayer(data = data.videoData)
+            ExoVideoPlayer(
+                data = data.videoData,
+                listOfVideosData = data.listOfVideosData
+            )
         }
         Spacer(modifier = modifier.padding(20.dp))
 
@@ -127,18 +126,18 @@ fun VideoPlayerContent(
                 Card(
                     modifier
                         .selectable(
-                            selected = selectedIndex == index,
+                            selected = data.videoData.videoCurrentIndex.value == index,
                             onClick = {
                                 data.videoData.videoFile.value = item.fileUrl
-                                selectedIndex = index
+                                data.videoData.videoCurrentIndex.value = index
                             }
                         )
                         .padding(8.dp)
-                        .blur(if (selectedIndex == index) 0.dp else 1.dp)
+                        .alpha(if (data.videoData.videoCurrentIndex.value == index) 1f else 0.5f)
                         .border(
-                            width = if (selectedIndex == index) 2.dp else 0.dp,
-                            color = if (selectedIndex == index) PurpleButton else Color.Transparent,
-                            shape = if (selectedIndex == index) RoundedCornerShape(10.dp) else RoundedCornerShape(
+                            width = if (data.videoData.videoCurrentIndex.value == index) 2.dp else 0.dp,
+                            color = if (data.videoData.videoCurrentIndex.value == index) PurpleButton else Color.Transparent,
+                            shape = if (data.videoData.videoCurrentIndex.value == index) RoundedCornerShape(10.dp) else RoundedCornerShape(
                                 0.dp))
                         .fillMaxWidth(),
                     shape = RoundedCornerShape(10.dp),

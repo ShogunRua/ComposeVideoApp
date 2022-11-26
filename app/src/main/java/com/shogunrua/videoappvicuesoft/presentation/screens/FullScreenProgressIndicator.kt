@@ -11,6 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.shogunrua.videoappvicuesoft.presentation.theme.PurpleButton
 
 @Composable
 fun FullScreenProgressIndicator(isLoading: Boolean) {
@@ -28,7 +29,7 @@ fun FullScreenProgressIndicator(isLoading: Boolean) {
                 modifier = Modifier
                     .size(100.dp)
                     .padding(8.dp),
-                color = Color.Blue,
+                color = PurpleButton,
             )
         }
     }
@@ -51,7 +52,7 @@ fun ProgressIndicatorPreview() {
                 modifier = Modifier
                     .size(100.dp)
                     .padding(8.dp),
-                color = Color.Blue,
+                color = PurpleButton,
             )
         }
     }

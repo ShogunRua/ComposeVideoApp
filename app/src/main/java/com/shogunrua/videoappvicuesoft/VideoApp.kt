@@ -6,7 +6,7 @@ import androidx.media3.datasource.DefaultHttpDataSource
 import androidx.media3.datasource.cache.CacheDataSource
 import androidx.media3.datasource.cache.LeastRecentlyUsedCacheEvictor
 import androidx.media3.datasource.cache.SimpleCache
-import com.shogunrua.videoappvicuesoft.presentation.utils.ExoPlayerUtil
+import com.shogunrua.videoappvicuesoft.presentation.utils.ExoPlayerInit
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
@@ -27,7 +27,7 @@ class VideoApp : Application() {
             .Factory()
             .setAllowCrossProtocolRedirects(true)
 
-        ExoPlayerUtil.initCache(
+        ExoPlayerInit.initCache(
             cacheDataSourceFactory = CacheDataSource.Factory()
                 .setCache(simpleCache)
                 .setUpstreamDataSourceFactory(httpDataSourceFactory)
