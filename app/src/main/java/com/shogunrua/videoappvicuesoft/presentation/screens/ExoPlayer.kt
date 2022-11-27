@@ -71,6 +71,7 @@ fun ExoVideoPlayer(
             }
         )
 
+        if(data.textIsVisible.value)
         TextFieldTouchBox(modifier = androidViewModifier, imageModifier = imageModifier)
 
     }

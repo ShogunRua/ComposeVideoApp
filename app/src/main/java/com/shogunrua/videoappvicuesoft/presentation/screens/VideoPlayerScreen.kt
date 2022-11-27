@@ -6,7 +6,6 @@ import androidx.compose.foundation.gestures.detectTransformGestures
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.itemsIndexed
-import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -29,15 +28,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.shogunrua.videoappvicuesoft.R
-import com.shogunrua.videoappvicuesoft.presentation.boxModifier
 import com.shogunrua.videoappvicuesoft.presentation.model.VideoDataCallbacks
 import com.shogunrua.videoappvicuesoft.presentation.model.VideoPlayerCombineData
 import com.shogunrua.videoappvicuesoft.presentation.model.uiState.VideoPlayerUiState
-import com.shogunrua.videoappvicuesoft.presentation.rotateBy
 import com.shogunrua.videoappvicuesoft.presentation.theme.GrayBackGround
 import com.shogunrua.videoappvicuesoft.presentation.theme.PurpleButton
+import com.shogunrua.videoappvicuesoft.presentation.utils.rotateBy
 import com.shogunrua.videoappvicuesoft.presentation.viewmodel.VideoFilesViewModel
-import kotlinx.coroutines.launch
 
 @Composable
 fun VideoPlayerScreen(
@@ -93,9 +90,6 @@ fun VideoPlayerContent(
     data: VideoPlayerCombineData,
     modifier: Modifier = Modifier,
 ) {
-
-//    ImageBox(boxModifier, imageModifier, R.drawable.ic_launcher_foreground)
-
     Column(
         verticalArrangement = Arrangement.Bottom,
         horizontalAlignment = Alignment.CenterHorizontally
@@ -144,7 +138,7 @@ fun VideoPlayerContent(
 
         Button(
             onClick = {
-
+                data.videoData.textIsVisible.value = true
             },
             modifier = modifier
                 .size(width = 150.dp, height = 50.dp),
