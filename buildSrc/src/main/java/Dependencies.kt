@@ -92,10 +92,6 @@ object Dependencies {
     //ExoPlayer
     private const val exoPlayer = "androidx.media3:media3-exoplayer:$exoPlayerVer"
     private const val exoPlayerUi = "androidx.media3:media3-ui:$exoPlayerVer"
-    private const val exoPlayerMediaSource =
-        "com.google.android.exoplayer:exoplayer-hls:$exoPlayerVer"
-    private const val exoPlayerCore = "com.google.android.exoplayer:exoplayer-core:$exoPlayerVer"
-    private const val exoPlayerDash = "com.google.android.exoplayer:exoplayer-dash:$exoPlayerVer"
 
     //Coil
     private const val coil = "io.coil-kt:coil:$coilVer"
@@ -149,9 +145,6 @@ object Dependencies {
 
         add(exoPlayer)
         add(exoPlayerUi)
-//        add(exoPlayerMediaSource)
-//        add(exoPlayerCore)
-//        add(exoPlayerDash)
 
         add(coil)
         add(coilSvg)

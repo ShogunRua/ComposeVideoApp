@@ -22,6 +22,4 @@ class VideoFilesApi @Inject constructor(
             }.body()
         }
     }
-
 }
-

@@ -15,8 +15,7 @@ object VideoFilesSerializer : KSerializer<VideoFilesResponse> {
 
     override fun serialize(encoder: Encoder, value: VideoFilesResponse) {
         val rowValues = value.videoFiles
-        rowValues.let { rowValues }
-            ?.let { encoder.encodeSerializableValue(serializer, it) }
+        rowValues.let { rowValues }.let { encoder.encodeSerializableValue(serializer, it) }
     }
 
     override fun deserialize(decoder: Decoder): VideoFilesResponse {
