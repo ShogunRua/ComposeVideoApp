@@ -21,7 +21,7 @@ import com.shogunrua.videoappvicuesoft.presentation.utils.androidViewModifier
 import kotlinx.coroutines.launch
 
 @Composable
-fun ExoVideoPlayer(
+fun ExoPlayerScreen(
     modifier: Modifier = Modifier,
     imageModifier: Modifier,
     data: VideoData,

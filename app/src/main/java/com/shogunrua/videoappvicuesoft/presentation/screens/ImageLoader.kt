@@ -9,7 +9,9 @@ import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
 
 @Composable
-fun ImageLoader(item: String) {
+fun ImageLoader(
+    item: String
+) {
     Image(
         painter = rememberAsyncImagePainter(item),
         contentDescription = null,

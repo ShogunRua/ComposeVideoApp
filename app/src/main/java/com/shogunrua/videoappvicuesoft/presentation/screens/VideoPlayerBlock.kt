@@ -35,8 +35,9 @@ fun VideoPlayerBlock(
     var centroid by remember { mutableStateOf(Offset.Zero) }
     var angle by remember { mutableStateOf(0f) }
 
-    val imageModifier = Modifier
+    val imageModifier = modifier
         .fillMaxSize()
+        .padding(start = 50.dp, top = 50.dp)
         .pointerInput(Unit) {
             detectTransformGestures(
                 onGesture = { gestureCentroid, gesturePan, gestureZoom, gestureRotate ->
@@ -65,7 +66,7 @@ fun VideoPlayerBlock(
     Column(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        ExoVideoPlayer(
+        ExoPlayerScreen(
             data = videoData,
             listOfVideosData = listOfVideosData,
             imageModifier = imageModifier,
