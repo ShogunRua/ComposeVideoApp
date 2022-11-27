@@ -55,14 +55,15 @@ fun TextFieldTouchBox(
                 disabledPlaceholderColor = Color.Transparent,
             ),
             label = {
-                if(!onFocused && text.isEmpty())
-                Text(
-                    text = stringResource(id = R.string.enter_text_hint),
-                    color = Color.Green,
-                    fontStyle = FontStyle.Italic,
-                    fontSize = 22.sp,
-                    fontWeight = FontWeight.SemiBold,
-                )
+                if(!onFocused && text.isEmpty()) {
+                    Text(
+                        text = stringResource(id = R.string.enter_text_hint),
+                        color = Color.Green,
+                        fontStyle = FontStyle.Italic,
+                        fontSize = 22.sp,
+                        fontWeight = FontWeight.SemiBold,
+                    )
+                }
             },
             onValueChange = {
                 text = it

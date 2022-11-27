@@ -71,8 +71,8 @@ fun ExoPlayerScreen(
             }
         )
 
-        if(data.textIsVisible.value)
-        TextFieldTouchBox(modifier = androidViewModifier, imageModifier = imageModifier)
-
+        if (data.textIsVisible.value) {
+            TextFieldTouchBox(modifier = androidViewModifier, imageModifier = imageModifier)
+        }
     }
 }
