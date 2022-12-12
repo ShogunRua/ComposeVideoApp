@@ -1,18 +1,18 @@
-# VideoTestApp (ViCueSoft)
+# ComposeVideoApp by ShogunRua
 
-## Стэк
+## Technology Stack
 
 - Kotlin
 - Ktor
 - Kotlin Dsl
 - Migrate Groovy to KTS
 - Jetpack Compose
-- Exo Player
+- ExoPlayer
 - Coil
 - Kotlin Flow, StateFlow
 - Kotlin Coroutines
 - MVVM, Clean Architecture
 - Hilt
 - Kotlinx Serialization
-- Kotlin Arrow
+- Arrow
 - Multi-touch Events

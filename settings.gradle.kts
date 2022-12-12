@@ -17,5 +17,5 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "TestVideoApp"
+rootProject.name = "ComposeVideoApp"
 include(":app")

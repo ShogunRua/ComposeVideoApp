@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">VideoApp ViCueSoft</string>
-    <string name="button_text">TEXT</string>
+    <string name="app_name">ComposeVideoApp</string>
+    <string name="button_text">Add text</string>
     <string name="enter_text_hint">Enter text:</string>
 </resources>

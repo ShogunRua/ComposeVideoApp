@@ -15,10 +15,10 @@ plugins {
 
 android {
     compileSdk = 33
-    namespace = "com.shogunrua.videoappvicuesoft"
+    namespace = "com.shogunrua.composevideoapp"
 
     defaultConfig {
-        applicationId = "com.shogunrua.videoappvicuesoft"
+        applicationId = "com.shogunrua.composevideoapp"
         minSdk = 24
         targetSdk = 33
         versionCode = 1
