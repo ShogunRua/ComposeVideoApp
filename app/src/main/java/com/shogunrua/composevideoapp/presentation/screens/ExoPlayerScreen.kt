@@ -39,17 +39,13 @@ fun ExoPlayerScreen(
             .clip(RoundedCornerShape(20.dp)),
         contentAlignment = Alignment.Center
     ) {
-        val mediaItemList = mutableListOf<MediaItem>()
-        listOfVideosData.listOfVideos.value.forEach {
-            mediaItemList.add(MediaItem.fromUri(it.fileUrl))
-        }
         AndroidView(
             modifier = modifier,
             factory = {
                 scope.launch {
                     exoPlayer.apply {
                         setMediaItems(
-                            mediaItemList,
+                            listOfVideosData.listOfMediaItems.value,
                             data.videoCurrentIndex.value,
                             LONG_0
                         )

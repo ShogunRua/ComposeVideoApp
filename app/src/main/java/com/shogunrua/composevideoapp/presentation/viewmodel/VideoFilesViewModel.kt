@@ -3,25 +3,25 @@ package com.shogunrua.composevideoapp.presentation.viewmodel
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.shogunrua.composevideoapp.domain.usecase.GetVideoFilesUseCase
+import androidx.media3.common.MediaItem
+import com.shogunrua.composevideoapp.domain.model.VideoFilesModel
+import com.shogunrua.composevideoapp.domain.usecase.VideoFilesUseCases
 import com.shogunrua.composevideoapp.presentation.model.ListOfVideosData
 import com.shogunrua.composevideoapp.presentation.model.VideoData
 import com.shogunrua.composevideoapp.presentation.model.VideoPlayerCombineData
 import com.shogunrua.composevideoapp.presentation.model.uiState.VideoPlayerUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-import kotlin.time.Duration.Companion.seconds
 
 @HiltViewModel
 class VideoFilesViewModel @Inject constructor(
-    private val getVideoFilesUseCase: GetVideoFilesUseCase,
+    private val videoFilesUseCases: VideoFilesUseCases,
 ) : ViewModel() {
 
     private var _uiState =
@@ -37,19 +37,24 @@ class VideoFilesViewModel @Inject constructor(
 
     private fun getVideoFiles() {
         viewModelScope.launch {
-            getVideoFilesUseCase.getVideoFiles().fold(
+            videoFilesUseCases.getVideoFilesUseCase.getVideoFiles().fold(
                 ifLeft = {
                     Log.d("Failure", "getVideoFilesFail")
                 },
                 ifRight = {
                     listOfVideosData.value.listOfVideos.value = it
                     videosData.value.videoFile.value =
-                        listOfVideosData.value.listOfVideos.value[0].fileUrl
+                        listOfVideosData.value.listOfVideos.value.first().fileUrl
+                    listOfVideosData.value.listOfMediaItems.value = getMediaItemsList(it)
                     buildVideoFilesUiData()
                     Log.d("VideoFilesViewModel", "getVideoFiles: $it")
                 }
             )
         }
+    }
+
+    private fun getMediaItemsList(listOfVideos: List<VideoFilesModel>): List<MediaItem> {
+        return videoFilesUseCases.getMediaItemsUseCase.getMediaItemsList(listOfVideos)
     }
 
     private fun buildVideoFilesUiData() {
