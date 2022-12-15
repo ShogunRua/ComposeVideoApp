@@ -15,6 +15,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import com.shogunrua.composevideoapp.domain.utils.FLOAT_1
+import com.shogunrua.composevideoapp.domain.utils.FLOAT_HALF_OF_1
 import com.shogunrua.composevideoapp.presentation.model.ListOfVideosData
 import com.shogunrua.composevideoapp.presentation.model.VideoData
 import com.shogunrua.composevideoapp.presentation.theme.GrayBackGround
@@ -37,12 +39,11 @@ fun VideoIconsBlock(
                     .selectable(
                         selected = videoData.videoCurrentIndex.value == index,
                         onClick = {
-                            videoData.videoFile.value = item.fileUrl
                             videoData.videoCurrentIndex.value = index
                         }
                     )
                     .padding(8.dp)
-                    .alpha(if (videoData.videoCurrentIndex.value == index) 1f else 0.5f)
+                    .alpha(if (videoData.videoCurrentIndex.value == index) FLOAT_1 else FLOAT_HALF_OF_1)
                     .border(
                         width = if (videoData.videoCurrentIndex.value == index) 2.dp else 0.dp,
                         color = if (videoData.videoCurrentIndex.value == index) PurpleButton else Color.Transparent,

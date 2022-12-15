@@ -7,12 +7,13 @@
 - Kotlin Dsl
 - Migrate Groovy to KTS
 - Jetpack Compose
+- MVI
+- Clean Architecture
 - ExoPlayer
-- Coil
 - Kotlin Flow, StateFlow
 - Kotlin Coroutines
-- MVVM, Clean Architecture
 - Hilt
 - Kotlinx Serialization
+- Coil
 - Arrow
 - Multi-touch Events

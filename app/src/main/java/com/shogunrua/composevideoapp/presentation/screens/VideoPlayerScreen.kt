@@ -1,9 +1,7 @@
 package com.shogunrua.composevideoapp.presentation.screens
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
+import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -19,39 +17,33 @@ fun VideoPlayerScreen(
 ) {
     val uiState by viewModel.uiState.collectAsState()
 
-    var inProgress by remember { mutableStateOf(true) }
-
-    FullScreenProgressIndicator(
-        isLoading = inProgress,
-    )
-
     VideoPlayerContentHandler(
         uiState = uiState,
-        progressState = {
-            inProgress = it
-        },
     )
 }
 
 @Composable
 fun VideoPlayerContentHandler(
     uiState: VideoPlayerUiState,
-    progressState: (Boolean) -> Unit,
 ) {
     when (uiState) {
         is VideoPlayerUiState.LoadComplete -> {
-            progressState.invoke(false)
             VideoPlayerContent(
                 data = uiState.uiData
             )
         }
 
         is VideoPlayerUiState.LoadInProgress -> {
-            progressState.invoke(true)
+            Column(
+                modifier = Modifier.fillMaxSize(),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally,
+            ) {
+                CircularProgressIndicator()
+            }
         }
 
         is VideoPlayerUiState.Error -> {
-            progressState.invoke(false)
         }
     }
 }

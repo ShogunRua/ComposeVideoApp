@@ -14,6 +14,8 @@ import androidx.compose.ui.viewinterop.AndroidView
 import androidx.media3.common.MediaItem
 import androidx.media3.common.Player
 import androidx.media3.ui.PlayerView
+import com.shogunrua.composevideoapp.domain.utils.FLOAT_0
+import com.shogunrua.composevideoapp.domain.utils.LONG_0
 import com.shogunrua.composevideoapp.presentation.model.ListOfVideosData
 import com.shogunrua.composevideoapp.presentation.model.VideoData
 import com.shogunrua.composevideoapp.presentation.utils.ExoPlayerInit
@@ -37,26 +39,29 @@ fun ExoPlayerScreen(
             .clip(RoundedCornerShape(20.dp)),
         contentAlignment = Alignment.Center
     ) {
+        val mediaItemList = mutableListOf<MediaItem>()
+        listOfVideosData.listOfVideos.value.forEach {
+            mediaItemList.add(MediaItem.fromUri(it.fileUrl))
+        }
         AndroidView(
             modifier = modifier,
             factory = {
                 scope.launch {
                     exoPlayer.apply {
-                        listOfVideosData.listOfVideos.value.indices.forEach { index ->
-                            if (index != 0) {
-                                val fileUrl = listOfVideosData.listOfVideos.value[index].fileUrl
-                                exoPlayer.addMediaItem(MediaItem.fromUri(fileUrl))
-                            }
-                        }
-                        volume = 0f
-                        repeatMode = Player.REPEAT_MODE_ALL
-                        playWhenReady = true
+                        setMediaItems(
+                            mediaItemList,
+                            data.videoCurrentIndex.value,
+                            LONG_0
+                        )
                         addListener(object : Player.Listener {
                             override fun onMediaItemTransition(mediaItem: MediaItem?, reason: Int) {
                                 super.onMediaItemTransition(mediaItem, reason)
                                 data.videoCurrentIndex.value = exoPlayer.currentMediaItemIndex
                             }
                         })
+                        volume = FLOAT_0
+                        repeatMode = Player.REPEAT_MODE_ALL
+                        playWhenReady = true
                         prepare()
                         play()
                     }
@@ -67,7 +72,7 @@ fun ExoPlayerScreen(
                 }
             },
             update = {
-                it.player?.setMediaItem(MediaItem.fromUri(data.videoFile.value))
+                it.player?.seekTo(data.videoCurrentIndex.value, LONG_0)
             }
         )
 

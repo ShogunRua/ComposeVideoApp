@@ -43,7 +43,6 @@ class VideoFilesViewModel @Inject constructor(
                 },
                 ifRight = {
                     listOfVideosData.value.listOfVideos.value = it
-                    delay(3.seconds)
                     videosData.value.videoFile.value =
                         listOfVideosData.value.listOfVideos.value[0].fileUrl
                     buildVideoFilesUiData()
