@@ -6,11 +6,14 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.SideEffect
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
@@ -21,6 +24,7 @@ import com.shogunrua.composevideoapp.presentation.model.ListOfVideosData
 import com.shogunrua.composevideoapp.presentation.model.VideoData
 import com.shogunrua.composevideoapp.presentation.theme.GrayBackGround
 import com.shogunrua.composevideoapp.presentation.theme.PurpleButton
+import kotlinx.coroutines.launch
 
 @Composable
 fun VideoIconsBlock(
@@ -28,7 +32,11 @@ fun VideoIconsBlock(
     listOfVideosData: ListOfVideosData,
     modifier: Modifier = Modifier,
 ) {
+    val coroutineScope = rememberCoroutineScope()
+    val listState = rememberLazyListState()
+
     LazyRow(
+        state = listState,
         modifier = modifier
             .background(color = GrayBackGround)
             .selectableGroup(),
@@ -55,6 +63,14 @@ fun VideoIconsBlock(
                 elevation = 5.dp,
             ) {
                 ImageLoader(item.smallPosterUrl)
+            }
+
+            SideEffect {
+                coroutineScope.launch {
+                    if (videoData.videoCurrentIndex.value == index) {
+                        listState.animateScrollToItem(index)
+                    }
+                }
             }
         }
     }
